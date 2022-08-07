@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import Tabs from "components/Tabs";
+import { Tabs, Search } from "components";
 
 import "swiper/css";
 import "./style.scss";
@@ -15,11 +15,11 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      <Search />
       <Tabs
         tabsLabel={["Today", "Tommorow", "10 Days"]}
         activeTabIndex={activeTabIndex}
       />
-
       <Swiper onSlideChange={onSlideChange}>
         <SwiperSlide>22222 Slide 1</SwiperSlide>
         <SwiperSlide>22222 Slide 2</SwiperSlide>
