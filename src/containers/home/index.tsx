@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Tabs, Search } from "components";
+import { Tabs, Search, Today } from "components";
 
 import "swiper/css";
 import "./style.scss";
@@ -21,7 +21,9 @@ const Home = () => {
         activeTabIndex={activeTabIndex}
       />
       <Swiper onSlideChange={onSlideChange}>
-        <SwiperSlide>22222 Slide 1</SwiperSlide>
+        <SwiperSlide>
+          <Today />
+        </SwiperSlide>
         <SwiperSlide>22222 Slide 2</SwiperSlide>
         <SwiperSlide>22222 Slide 3</SwiperSlide>
       </Swiper>
