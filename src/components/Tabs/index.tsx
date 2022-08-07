@@ -10,7 +10,10 @@ const Tabs: FC<IProps> = ({ tabsLabel, activeTabIndex }) => {
   return (
     <div className="tabs">
       {tabsLabel.map((label, index) => (
-        <div className={`tab ${activeTabIndex === index ? "active" : ""}`}>
+        <div
+          key={label}
+          className={`tab ${activeTabIndex === index ? "active" : ""}`}
+        >
           {label}
         </div>
       ))}
