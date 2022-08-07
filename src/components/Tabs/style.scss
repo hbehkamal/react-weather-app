@@ -1,0 +1,9 @@
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  height: 20px;
+}
+
+.tabs .active {
+  font-weight: 800;
+}
