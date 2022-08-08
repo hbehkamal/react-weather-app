@@ -1,5 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+export const getCity = createApi({
+  reducerPath: "city",
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.REACT_APP_CITY_API_URL,
+  }),
+  endpoints: (builder) => ({
+    getCityByName: builder.query({
+      query: (name) => `json?input=${name}`,
+    }),
+  }),
+});
+
 export const getWather = createApi({
   reducerPath: "weather",
   baseQuery: fetchBaseQuery({
@@ -13,3 +25,4 @@ export const getWather = createApi({
 });
 
 export const { useGetWeatherByNameQuery } = getWather;
+export const { useGetCityByNameQuery } = getCity;
