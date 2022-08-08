@@ -19,7 +19,8 @@ export const getWather = createApi({
   }),
   endpoints: (builder) => ({
     getWeatherByName: builder.query({
-      query: (name) => `${name}/?key=${process.env.REACT_APP_API_KEY}`,
+      query: (name) =>
+        `${name}/?unitGroup=metric&key=${process.env.REACT_APP_API_KEY}`,
     }),
   }),
 });
