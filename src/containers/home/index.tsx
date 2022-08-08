@@ -19,11 +19,12 @@ const Home = () => {
   return (
     <div className="home-container">
       <Search />
-      <Tabs
-        tabsLabel={["Today", "Tommorow", "10 Days"]}
-        activeTabIndex={activeTabIndex}
-      />
       <Swiper onSlideChange={onSlideChange}>
+        <Tabs
+          tabsLabel={["Today", "tomorrow", "10 Days"]}
+          activeTabIndex={activeTabIndex}
+          slot="container-start"
+        />
         <SwiperSlide>
           <Today />
         </SwiperSlide>
