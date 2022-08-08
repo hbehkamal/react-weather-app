@@ -39,14 +39,10 @@ const Home = () => {
           slot="container-start"
         />
         <SwiperSlide>
-          {!today ? (
-            <div>loading</div>
-          ) : (
-            <SingleDay isToday conditions={today} />
-          )}
+          {!today ? <div>loading</div> : <SingleDay isToday weather={today} />}
         </SwiperSlide>
         <SwiperSlide>
-          {!tomorrow ? <div>loading</div> : <SingleDay conditions={tomorrow} />}
+          {!tomorrow ? <div>loading</div> : <SingleDay weather={tomorrow} />}
         </SwiperSlide>
         <SwiperSlide>22222 Slide 3</SwiperSlide>
       </Swiper>
