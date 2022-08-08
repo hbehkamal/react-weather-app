@@ -11,7 +11,6 @@ const Home = () => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   const { data, error, isLoading } = useGetWeatherByNameQuery("Mashhad, Iran");
-  console.log("data, error, isLoading : ", { data, error, isLoading });
 
   const onSlideChange = (slide) => {
     setActiveTabIndex(slide.snapIndex);
