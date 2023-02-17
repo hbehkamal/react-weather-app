@@ -1,3 +1,5 @@
+import IHour from "./hour";
+
 export default interface Condition {
   conditions: string;
   datetime: string;
@@ -14,4 +16,5 @@ export default interface Condition {
   visibility: number;
   winddir: number;
   windspeed: number;
+  hours: IHour[];
 }

@@ -19,8 +19,8 @@ const Home = () => {
   useEffect(() => {
     if (error || isLoading || !data) return;
 
-    const { currentConditions = {}, days = [] } = data;
-    setToday(currentConditions);
+    const { days = [] } = data;
+    setToday(days[0]);
     setTomorrow(days[1]);
     setTenDays(days.slice(0, 10));
   }, [data]);
