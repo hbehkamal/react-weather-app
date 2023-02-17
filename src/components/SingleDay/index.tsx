@@ -39,7 +39,8 @@ const SingleDay: FC<IProps> = ({ weather, isToday = false }) => {
       <Swiper
         direction="vertical"
         slidesPerView={6}
-        style={{ height: "50vw", paddingTop: 10 }}
+        style={{ height: "50vw" }}
+        className="p-3"
       >
         {!!hours.length &&
           hours.map(({ datetime, temp }) => (
