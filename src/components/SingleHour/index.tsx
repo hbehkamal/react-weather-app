@@ -13,12 +13,18 @@ const SingleHour: FC<IHour> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const isTenDays = datetime.includes("-");
+
   const onClick = () => setIsOpen(!isOpen);
   return (
-    <div className="flex flex-col w-full rounded-sm mb-1">
+    <div
+      className={`flex flex-col w-full rounded-sm mb-1 ${
+        isTenDays ? "flex-1" : ""
+      }`}
+    >
       <div
         style={{ padding: "1vh" }}
-        className="bg-white flex justify-between"
+        className={`bg-white flex justify-between ${isTenDays ? "h-full" : ""}`}
         onClick={onClick}
       >
         <div className="flex items-center">
@@ -28,7 +34,14 @@ const SingleHour: FC<IHour> = ({
             alt={icon}
             className="mr-2"
           />
-          <span>{Number(datetime.split(":")[0])}</span>
+          <span>
+            {isTenDays
+              ? new Date(datetime).toLocaleDateString(undefined, {
+                  month: "short",
+                  day: "numeric",
+                })
+              : Number(datetime.split(":")[0])}
+          </span>
         </div>
 
         <span className="flex items-center">
