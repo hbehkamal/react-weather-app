@@ -1,45 +1,41 @@
 import { FC } from "react";
 import { Condition } from "types";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import "./style.scss";
 import SingleHour from "components/SingleHour";
 interface IProps {
   weather: Condition;
   isToday?: boolean;
+  city: string;
 }
 
-const SingleDay: FC<IProps> = ({ weather, isToday = false }) => {
+const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
   const { temp, icon, conditions, hours } = weather;
 
   return (
     <div className="w-11/12">
       <div className="flex items-center flex-col">
-        <img
-          // style={{ width: 154 }}
-          className="w-1/3"
-          src={`img/${icon}.png`}
-          alt={conditions}
-        />
+        <img className="w-1/3" src={`img/${icon}.png`} alt={conditions} />
         <h2 className="text-6xl">{temp} C°</h2>
-        <h3 className="font-bold">{conditions}</h3>
+        <span>
+          <span>{city}</span>
+          <h3 className="font-bold">{conditions}</h3>
+        </span>
       </div>
 
-      <Swiper
-        direction="vertical"
-        slidesPerView={6}
+      <div
+        className="p-3 first-letter:flex flex-col overflow-y-scroll"
         style={{ height: "50vh" }}
-        className="p-3 w-full"
-        autoHeight
-        observer
       >
         {!!hours.length &&
-          hours.map((hour) => (
-            <SwiperSlide className="w-full" style={{ height: "auto" }}>
-              <SingleHour {...hour} />
-            </SwiperSlide>
-          ))}
-      </Swiper>
+          hours
+            .filter((hour) => {
+              const now = new Date(Date.now()).getHours();
+
+              return !isToday || now <= Number(hour.datetime.split(":")[0]);
+            })
+            .map((hour) => <SingleHour key={hour.datetime} {...hour} />)}
+      </div>
     </div>
   );
 };
