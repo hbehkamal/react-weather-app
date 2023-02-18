@@ -4,13 +4,23 @@ export const getCity = createApi({
   reducerPath: "city",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_CITY_API_URL,
+    prepareHeaders: (headers) => {
+      headers.set(
+        "authorization",
+        `Bearer ${process.env.REACT_APP_CITY_API_TOKEN}`
+      );
+
+      return headers;
+    },
   }),
   endpoints: (builder) => ({
     getCityByName: builder.query({
-      query: (name) => `json?input=${name}`,
+      query: (name) => `reference-data/locations/cities?keyword=${name}`,
     }),
   }),
 });
+
+
 
 export const getWather = createApi({
   reducerPath: "weather",

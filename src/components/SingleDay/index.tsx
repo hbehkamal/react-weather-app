@@ -11,7 +11,6 @@ interface IProps {
 
 const SingleDay: FC<IProps> = ({ weather, isToday = false }) => {
   const { temp, icon, conditions, hours } = weather;
-  console.log("weather: ", isToday, weather);
 
   return (
     <div className="w-11/12">

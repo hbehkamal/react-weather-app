@@ -9,12 +9,16 @@ import "swiper/css";
 import "./style.scss";
 
 const Home = () => {
+  const [city, setCity] = useState(
+    localStorage.getItem("city") || "Mashhad, Iran"
+  );
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [today, setToday] = useState<Condition>();
   const [tomorrow, setTomorrow] = useState<Condition>();
   const [tenDays, setTenDays] = useState<Condition[]>();
 
-  const { data, error, isLoading } = useGetWeatherByNameQuery("Mashhad, Iran");
+  const { data, error, isLoading } = useGetWeatherByNameQuery(city);
+  console.log("city: ", city);
 
   useEffect(() => {
     if (error || isLoading || !data) return;
@@ -31,7 +35,7 @@ const Home = () => {
 
   return (
     <div className="home-container bg-slate-400">
-      <Search />
+      <Search setCity={setCity} />
       <Swiper onSlideChange={onSlideChange}>
         <Tabs
           tabsLabel={["Today", "Tomorrow", "10 Days"]}
