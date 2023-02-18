@@ -15,7 +15,7 @@ const SingleHour: FC<IHour> = ({
 
   const onClick = () => setIsOpen(!isOpen);
   return (
-    <div className="flex flex-col w-full rounded-sm">
+    <div className="flex flex-col w-full rounded-sm mb-1">
       <div
         style={{ padding: "1vh" }}
         className="bg-white flex justify-between"

@@ -12,13 +12,13 @@ const Home = () => {
   const [city, setCity] = useState(
     localStorage.getItem("city") || "Mashhad, Iran"
   );
+  console.log("city: ", city);
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [today, setToday] = useState<Condition>();
   const [tomorrow, setTomorrow] = useState<Condition>();
   const [tenDays, setTenDays] = useState<Condition[]>();
 
   const { data, error, isLoading } = useGetWeatherByNameQuery(city);
-  console.log("city: ", city);
 
   useEffect(() => {
     if (error || isLoading || !data) return;
@@ -43,10 +43,18 @@ const Home = () => {
           slot="container-start"
         />
         <SwiperSlide>
-          {!today ? <div>loading</div> : <SingleDay isToday weather={today} />}
+          {!today ? (
+            <div>loading</div>
+          ) : (
+            <SingleDay city={city} isToday weather={today} />
+          )}
         </SwiperSlide>
         <SwiperSlide>
-          {!tomorrow ? <div>loading</div> : <SingleDay weather={tomorrow} />}
+          {!tomorrow ? (
+            <div>loading</div>
+          ) : (
+            <SingleDay city={city} weather={tomorrow} />
+          )}
         </SwiperSlide>
         <SwiperSlide>22222 Slide 3</SwiperSlide>
       </Swiper>

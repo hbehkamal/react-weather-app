@@ -8,7 +8,7 @@ const HourDetails: FC<IHourDetails> = ({
   pressure,
 }) => {
   return (
-    <div className="bg-gray-100 w-full z-10 h-auto">
+    <div className="bg-gray-100 w-full z-10 h-auto shadow-inner shadow-gray-300">
       <div className="w-5/6 p-1 mx-auto my-auto flex justify-between">
         <span className="font-bold">Humidity:</span>
         <span>{humidity}%</span>
