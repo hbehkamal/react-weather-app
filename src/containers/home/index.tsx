@@ -30,11 +30,11 @@ const Home = () => {
   };
 
   return (
-    <div className="home-container">
+    <div className="home-container bg-slate-400">
       <Search />
       <Swiper onSlideChange={onSlideChange}>
         <Tabs
-          tabsLabel={["Today", "tomorrow", "10 Days"]}
+          tabsLabel={["Today", "Tomorrow", "10 Days"]}
           activeTabIndex={activeTabIndex}
           slot="container-start"
         />

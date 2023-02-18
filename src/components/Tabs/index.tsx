@@ -16,7 +16,7 @@ const Tabs: FC<IProps> = ({ tabsLabel, activeTabIndex, slot }) => {
   };
 
   return (
-    <div className="tabs" slot={slot}>
+    <div className="tabs my-2" slot={slot}>
       {tabsLabel.map((label, index) => (
         <div
           key={label}
