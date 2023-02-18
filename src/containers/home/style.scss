@@ -22,14 +22,7 @@
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  background-color: #999;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  @apply bg-slate-300;
 }
 
 .swiper {
