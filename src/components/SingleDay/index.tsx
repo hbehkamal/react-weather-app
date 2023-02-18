@@ -24,7 +24,7 @@ const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
       </div>
 
       <div
-        className="p-3 first-letter:flex flex-col overflow-y-scroll"
+        className="p-3 flex flex-col overflow-y-scroll"
         style={{ height: "50vh" }}
       >
         {!!hours.length &&

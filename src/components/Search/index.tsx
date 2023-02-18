@@ -20,7 +20,6 @@ interface ISearch {
 const Search = ({ getCityAPI, setCity }) => {
   const debouncedSearch = debounce(async (criteria) => {
     const { data, isSuccess } = await getCityAPI(criteria);
-    console.log("result: ", data);
     if (isSuccess) {
       setCity(data?.data?.[0]?.name);
     }

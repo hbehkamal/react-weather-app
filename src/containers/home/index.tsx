@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Tabs, Search, SingleDay } from "components";
+import { Tabs, Search, SingleDay, SingleHour } from "components";
 import { useGetWeatherByNameQuery } from "api";
 import { Condition } from "types";
 
@@ -12,7 +12,6 @@ const Home = () => {
   const [city, setCity] = useState(
     localStorage.getItem("city") || "Mashhad, Iran"
   );
-  console.log("city: ", city);
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [today, setToday] = useState<Condition>();
   const [tomorrow, setTomorrow] = useState<Condition>();
@@ -56,7 +55,13 @@ const Home = () => {
             <SingleDay city={city} weather={tomorrow} />
           )}
         </SwiperSlide>
-        <SwiperSlide>22222 Slide 3</SwiperSlide>
+        <SwiperSlide>
+          <div className="p-3 flex flex-col overflow-y-scroll w-full h-full">
+            {tenDays &&
+              !!tenDays.length &&
+              tenDays.map((day) => <SingleHour {...day} />)}
+          </div>
+        </SwiperSlide>
       </Swiper>
     </div>
   );
