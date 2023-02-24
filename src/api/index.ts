@@ -20,8 +20,6 @@ export const getCity = createApi({
   }),
 });
 
-
-
 export const getWather = createApi({
   reducerPath: "weather",
   baseQuery: fetchBaseQuery({

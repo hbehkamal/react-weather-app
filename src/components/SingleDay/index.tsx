@@ -23,6 +23,8 @@ const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
     pressure,
     uvindex,
     visibility,
+    tempmin,
+    tempmax,
   } = weather;
   const now = new Intl.DateTimeFormat(undefined, {
     weekday: "long",
@@ -37,7 +39,9 @@ const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
       <div className="flex flex-col items-center justify-between pt-4">
         <span className="flex flex-col items-start w-full px-6 -mt-5">
           <span>{now}</span>
-          <span>Max: x | Min: y</span>
+          <span>
+            Day: {tempmax} | Night: {tempmin}
+          </span>
         </span>
         <div className="flex px-2 mb-16">
           <div className="flex flex-col items-start mr-6">

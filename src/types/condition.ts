@@ -12,6 +12,8 @@ export default interface Condition {
   sunrise: string;
   sunset: string;
   temp: number;
+  tempmin: number;
+  tempmax: number;
   uvindex: number;
   visibility: number;
   winddir: number;

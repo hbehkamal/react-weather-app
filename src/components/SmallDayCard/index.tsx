@@ -4,7 +4,8 @@ import { IHour } from "types";
 
 const SmallDayCard: FC<IHour> = ({
   datetime,
-  temp,
+  tempmin,
+  tempmax,
   icon,
   humidity,
   uvindex,
@@ -45,7 +46,10 @@ const SmallDayCard: FC<IHour> = ({
         </div>
 
         <span className="flex items-center">
-          {temp} C°{" "}
+          <div className="flex flex-col text-sm">
+            <span>{tempmax} C° </span>
+            <span>{tempmin} C° </span>
+          </div>
           <img
             style={{ width: 24, height: 24 }}
             src={`icon/arrow-down.svg`}
