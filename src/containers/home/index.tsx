@@ -7,6 +7,7 @@ import { Condition } from "types";
 
 import "swiper/css";
 import "./style.scss";
+import { roundNumbers } from "utils";
 
 const Home = () => {
   const [city, setCity] = useState(
@@ -23,9 +24,9 @@ const Home = () => {
     if (error || isLoading || !data) return;
 
     const { days = [] } = data;
-    setToday(days[0]);
-    setTomorrow(days[1]);
-    setTenDays(days.slice(0, 10));
+    setToday(roundNumbers(days[0]));
+    setTomorrow(roundNumbers(days[1]));
+    setTenDays(days.slice(0, 10).map(roundNumbers));
   }, [data]);
 
   const onSlideChange = (slide) => {

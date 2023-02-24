@@ -669,6 +669,10 @@ video {
   margin-top: -20px;
 }
 
+.mr-1 {
+  margin-right: 4px;
+}
+
 .flex {
   display: flex;
 }
@@ -895,6 +899,14 @@ video {
 
 .pt-4 {
   padding-top: 16px;
+}
+
+.pb-1 {
+  padding-bottom: 4px;
+}
+
+.pt-3 {
+  padding-top: 12px;
 }
 
 .text-6xl {

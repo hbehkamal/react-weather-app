@@ -20,7 +20,7 @@ const HourDetails: FC<IHourDetails> = ({
       </div>
       <div className="w-5/6 p-1 mx-auto my-auto flex justify-between border-gray-300 border-b border-1">
         <span className="font-bold">Visibility:</span>
-        <span>{visibility} KM</span>
+        <span>{visibility} km</span>
       </div>
       <div className="w-5/6 p-1 mx-auto my-auto flex justify-between">
         <span className="font-bold">Pressure:</span>
