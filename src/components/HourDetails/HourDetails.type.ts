@@ -3,4 +3,5 @@ export interface IHourDetails {
   uvindex: number;
   visibility: number;
   pressure: number;
+  className?: string;
 }

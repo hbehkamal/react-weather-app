@@ -2,7 +2,7 @@ import HourDetails from "components/HourDetails";
 import { FC, useState } from "react";
 import { IHour } from "types";
 
-const SingleHour: FC<IHour> = ({
+const SmallDayCard: FC<IHour> = ({
   datetime,
   temp,
   icon,
@@ -60,10 +60,11 @@ const SingleHour: FC<IHour> = ({
           uvindex={uvindex}
           visibility={visibility}
           pressure={pressure}
+          className="bg-gray-100 shadow-inner shadow-gray-300"
         />
       )}
     </div>
   );
 };
 
-export default SingleHour;
+export default SmallDayCard;

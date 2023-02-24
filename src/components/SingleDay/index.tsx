@@ -1,8 +1,11 @@
 import { FC } from "react";
 import { Condition } from "types";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import LargeHourCard from "components/LargeHourCard";
 
 import "./style.scss";
-import SingleHour from "components/SingleHour";
+import HourDetails from "components/HourDetails";
 interface IProps {
   weather: Condition;
   isToday?: boolean;
@@ -10,31 +13,53 @@ interface IProps {
 }
 
 const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
-  const { temp, icon, conditions, hours } = weather;
+  const {
+    temp,
+    icon,
+    conditions,
+    hours,
+    feelslike,
+    humidity,
+    pressure,
+    uvindex,
+    visibility,
+  } = weather;
 
   return (
-    <div className="w-11/12">
-      <div className="flex items-center flex-col">
-        <img className="w-1/3" src={`img/${icon}.png`} alt={conditions} />
-        <h2 className="text-6xl">{temp} C°</h2>
-        <span>
-          <span>{city}</span>
-          <h3 className="font-bold">{conditions}</h3>
-        </span>
+    <div className="w-full flex flex-col h-full justify-around">
+      <div className="flex flex-col items-center justify-between pt-4">
+        <div className="flex px-2 mb-16 -mt-8">
+          <div className="flex flex-col items-start mr-6">
+            <span>Now</span>
+            <span>Max: x | Min: y</span>
+            <h2 className="text-6xl">{temp} C°</h2>
+            <span>Feels like {feelslike} C°</span>
+          </div>
+          <div className="flex flex-col items-center justify-end">
+            <img className="w-1/2" src={`img/${icon}.png`} alt={conditions} />
+            <span>{conditions}</span>
+          </div>
+        </div>
+        <div className="w-5/6">
+          <HourDetails
+            humidity={humidity}
+            pressure={pressure}
+            uvindex={uvindex}
+            visibility={visibility}
+            className="bg-slate-400 py-3 rounded-sm"
+          />
+        </div>
       </div>
 
-      <div
-        className="p-3 flex flex-col overflow-y-scroll"
-        style={{ height: "50vh" }}
-      >
-        {!!hours.length &&
-          hours
-            .filter((hour) => {
-              const now = new Date(Date.now()).getHours();
-
-              return !isToday || now <= Number(hour.datetime.split(":")[0]);
-            })
-            .map((hour) => <SingleHour key={hour.datetime} {...hour} />)}
+      <div className="flex flex-row px-2">
+        <Swiper nested slidesPerView={6}>
+          {!!hours.length &&
+            hours.map((hour) => (
+              <SwiperSlide>
+                <LargeHourCard key={hour.datetime} {...hour} />
+              </SwiperSlide>
+            ))}
+        </Swiper>
       </div>
     </div>
   );

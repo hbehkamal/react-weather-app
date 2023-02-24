@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Tabs, Search, SingleDay, SingleHour } from "components";
+import { Tabs, Search, SingleDay, SmallDayCard } from "components";
 import { useGetWeatherByNameQuery } from "api";
 import { Condition } from "types";
 
@@ -59,7 +59,7 @@ const Home = () => {
           <div className="p-3 flex flex-col overflow-y-scroll w-full h-full">
             {tenDays &&
               !!tenDays.length &&
-              tenDays.map((day) => <SingleHour {...day} />)}
+              tenDays.map((day) => <SmallDayCard {...day} />)}
           </div>
         </SwiperSlide>
       </Swiper>
