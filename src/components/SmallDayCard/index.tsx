@@ -19,7 +19,7 @@ const SmallDayCard: FC<IHour> = ({
   const onClick = () => setIsOpen(!isOpen);
   return (
     <div
-      className={`flex flex-col w-full rounded-sm mb-1 ${
+      className={`flex flex-col w-full rounded-sm border-b border-1 border-gray-400 ${
         isTenDays ? "flex-1" : ""
       }`}
     >
@@ -30,7 +30,7 @@ const SmallDayCard: FC<IHour> = ({
       >
         <div className="flex items-center">
           <img
-            style={{ width: 24, height: 24 }}
+            style={{ width: 64, height: 64 }}
             src={`img/${icon}.png`}
             alt={icon}
             className="mr-2"
@@ -46,9 +46,9 @@ const SmallDayCard: FC<IHour> = ({
         </div>
 
         <span className="flex items-center">
-          <div className="flex flex-col text-sm">
-            <span>{tempmax} C° </span>
-            <span>{tempmin} C° </span>
+          <div className="flex flex-col text-md">
+            <span>{tempmax}° </span>
+            <span>{tempmin}° </span>
           </div>
           <img
             style={{ width: 24, height: 24 }}

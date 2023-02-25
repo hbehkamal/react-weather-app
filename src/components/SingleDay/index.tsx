@@ -35,22 +35,28 @@ const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
     hour12: false,
   }).format(new Date());
   return (
-    <div className="w-full flex flex-col h-full justify-around">
+    <div className="w-full flex flex-col h-full justify-between bg-sky-500">
       <div className="flex flex-col items-center justify-between pt-4">
-        <span className="flex flex-col items-start w-full px-6 -mt-5">
+        <span className="flex flex-col items-start w-full px-6">
           <span>{now}</span>
-          <span>
+          <span className="text-white">
             Day: {tempmax} | Night: {tempmin}
           </span>
         </span>
-        <div className="flex px-2 mb-16">
+        <div className="flex px-6 pt-4 justify-between w-full mb-16 text-white">
           <div className="flex flex-col items-start mr-6">
-            <h2 className="text-6xl">{temp} C°</h2>
-            <span>Feels like {feelslike} C°</span>
+            <span className="text-8xl">
+              {temp}
+              <sup>°C</sup>
+            </span>
+            <span>
+              Feels like {feelslike}
+              <sup className="text-sm">°C</sup>
+            </span>
           </div>
           <div className="flex flex-col items-center justify-end">
-            <img className="w-1/2" src={`img/${icon}.png`} alt={conditions} />
-            <span>{conditions}</span>
+            <img className="w-24" src={`img/${icon}.png`} alt={conditions} />
+            <span className="text-base">{conditions}</span>
           </div>
         </div>
         <div className="w-5/6">
@@ -59,12 +65,12 @@ const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
             pressure={pressure}
             uvindex={uvindex}
             visibility={visibility}
-            className="bg-slate-400 py-3 rounded-sm"
+            className="bg-slate-400 text-white p-1 rounded-sm"
           />
         </div>
       </div>
 
-      <div className="flex flex-row px-2">
+      <div className="flex flex-row">
         <Swiper nested slidesPerView={6}>
           {!!hours.length &&
             hours.map((hour) => (

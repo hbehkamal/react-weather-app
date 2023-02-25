@@ -16,11 +16,11 @@ const Tabs: FC<IProps> = ({ tabsLabel, activeTabIndex, slot }) => {
   };
 
   return (
-    <div className="tabs my-2" slot={slot}>
+    <div className="tabs flex my-2 pb-4" slot={slot}>
       {tabsLabel.map((label, index) => (
         <div
           key={label}
-          className={`tab ${activeTabIndex === index ? "active" : ""}`}
+          className={`w-1/3 text-center ${activeTabIndex === index ? "active" : ""}`}
           onClick={onClick(index)}
         >
           {label}
