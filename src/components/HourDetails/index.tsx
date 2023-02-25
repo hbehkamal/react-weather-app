@@ -11,20 +11,20 @@ const HourDetails: FC<IHourDetails> = ({
   return (
     <div className={`w-full z-10 h-auto ${className}`}>
       <div className="w-full p-1 my-auto flex justify-between border-gray-300 border-b border-1">
-        <span className="font-semibold">Humidity:</span>
-        <span>{humidity}%</span>
+        <span>Humidity:</span>
+        <span className="font-light">{humidity}%</span>
       </div>
       <div className="w-full p-1 my-auto flex justify-between border-gray-300 border-b border-1">
-        <span className="font-semibold">UV Index:</span>
-        <span>{uvindex}</span>
+        <span>UV Index:</span>
+        <span className="font-light">{uvindex}</span>
       </div>
       <div className="w-full p-1 my-auto flex justify-between border-gray-300 border-b border-1">
-        <span className="font-semibold">Visibility:</span>
-        <span>{visibility} km</span>
+        <span>Visibility:</span>
+        <span className="font-light">{visibility} km</span>
       </div>
       <div className="w-full p-1 my-auto flex justify-between">
-        <span className="font-semibold">Pressure:</span>
-        <span>{pressure} mBar</span>
+        <span>Pressure:</span>
+        <span className="font-light">{pressure} mBar</span>
       </div>
     </div>
   );
