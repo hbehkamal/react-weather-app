@@ -24,16 +24,8 @@ const Home = () => {
     if (error || isLoading || !data) return;
 
     const { days = [] } = data;
-    // Filter hours before now
-    const todayCondition = {
-      ...roundNumbers(days[0]),
-      hours: days[0].hours.filter((hour) => {
-        const now = new Date(Date.now()).getHours();
-
-        return now <= Number(hour.datetime.split(":")[0]);
-      }),
-    };
-    setToday(todayCondition);
+    
+    setToday(roundNumbers(days[0]));
     setTomorrow(roundNumbers(days[1]));
     setTenDays(days.slice(0, 10).map(roundNumbers));
   }, [data]);

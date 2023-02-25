@@ -11,6 +11,7 @@ const SmallDayCard: FC<IHour> = ({
   uvindex,
   visibility,
   pressure,
+  windspeed,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -64,6 +65,7 @@ const SmallDayCard: FC<IHour> = ({
           uvindex={uvindex}
           visibility={visibility}
           pressure={pressure}
+          windspeed={windspeed}
           className="bg-gray-100 shadow-inner shadow-gray-300"
         />
       )}
