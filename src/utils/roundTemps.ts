@@ -9,4 +9,5 @@ export const roundNumbers = (data: Condition) => ({
   pressure: Math.round(data.pressure),
   visibility: Math.round(data.visibility),
   humidity: Math.round(data.humidity),
+  hours: data.hours ? data.hours.map(roundNumbers) : undefined,
 });

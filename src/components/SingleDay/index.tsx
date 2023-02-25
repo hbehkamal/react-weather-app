@@ -65,13 +65,13 @@ const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
             pressure={pressure}
             uvindex={uvindex}
             visibility={visibility}
-            className="bg-slate-400 text-white p-1 rounded-sm"
+            className="border-spacing-1 border border-gray-300 text-white p-2 rounded"
           />
         </div>
       </div>
 
       <div className="flex flex-row">
-        <Swiper nested slidesPerView={6}>
+        <Swiper nested slidesPerView={5}>
           {!!hours.length &&
             hours.map((hour) => (
               <SwiperSlide>
