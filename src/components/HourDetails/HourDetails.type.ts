@@ -3,5 +3,6 @@ export interface IHourDetails {
   uvindex: number;
   visibility: number;
   pressure: number;
+  windspeed: number;
   className?: string;
 }

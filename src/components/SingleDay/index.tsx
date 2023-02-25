@@ -25,6 +25,7 @@ const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
     visibility,
     tempmin,
     tempmax,
+    windspeed,
   } = weather;
   const now = new Intl.DateTimeFormat(undefined, {
     weekday: "long",
@@ -65,13 +66,18 @@ const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
             pressure={pressure}
             uvindex={uvindex}
             visibility={visibility}
+            windspeed={windspeed}
             className="border-spacing-1 border border-gray-300 text-white p-2 rounded"
           />
         </div>
       </div>
 
       <div className="flex flex-row">
-        <Swiper nested slidesPerView={5}>
+        <Swiper
+          nested
+          slidesPerView={5}
+          initialSlide={new Date(Date.now()).getHours()}
+        >
           {!!hours.length &&
             hours.map((hour) => (
               <SwiperSlide>

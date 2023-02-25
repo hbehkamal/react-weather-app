@@ -6,6 +6,7 @@ const HourDetails: FC<IHourDetails> = ({
   uvindex,
   visibility,
   pressure,
+  windspeed,
   className = "",
 }) => {
   return (
@@ -21,6 +22,10 @@ const HourDetails: FC<IHourDetails> = ({
       <div className="w-full p-1 my-auto flex justify-between border-gray-300 border-b border-1">
         <span>Visibility:</span>
         <span className="font-light">{visibility} km</span>
+      </div>
+      <div className="w-full p-1 my-auto flex justify-between border-gray-300 border-b border-1">
+        <span>Wind Speed:</span>
+        <span className="font-light">{windspeed} km/h</span>
       </div>
       <div className="w-full p-1 my-auto flex justify-between">
         <span>Pressure:</span>

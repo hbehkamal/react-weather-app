@@ -8,4 +8,5 @@ export default interface IHour {
   uvindex: number;
   visibility: number;
   pressure: number;
+  windspeed: number;
 }
