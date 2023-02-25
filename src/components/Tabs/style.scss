@@ -1,9 +1,9 @@
 .tabs {
-  display: flex;
-  justify-content: space-around;
-  height: 25px;
+  height: 30px;
+  font-weight: 600;
+  @apply text-gray-300 uppercase;
 }
 
 .tabs .active {
-  font-weight: 800;
+  @apply text-white border-b-2 border-white pb-9;
 }
