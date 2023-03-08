@@ -76,7 +76,7 @@ const SingleDay: FC<IProps> = ({ weather, isToday = false, city }) => {
         <Swiper
           nested
           slidesPerView={5}
-          initialSlide={new Date(Date.now()).getHours()}
+          initialSlide={isToday ? new Date(Date.now()).getHours() : 1}
         >
           {!!hours.length &&
             hours.map((hour) => (
