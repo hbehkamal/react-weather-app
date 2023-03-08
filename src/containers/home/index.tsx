@@ -24,7 +24,7 @@ const Home = () => {
     if (error || isLoading || !data) return;
 
     const { days = [] } = data;
-    
+
     setToday(roundNumbers(days[0]));
     setTomorrow(roundNumbers(days[1]));
     setTenDays(days.slice(0, 10).map(roundNumbers));
@@ -61,7 +61,9 @@ const Home = () => {
           <div className="flex flex-col overflow-y-scroll w-full h-full">
             {tenDays &&
               !!tenDays.length &&
-              tenDays.map((day) => <SmallDayCard {...day} />)}
+              tenDays.map((day) => (
+                <SmallDayCard key={day.datetime} {...day} />
+              ))}
           </div>
         </SwiperSlide>
       </Swiper>

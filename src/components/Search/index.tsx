@@ -1,12 +1,14 @@
 import debounce from "lodash.debounce";
+import { AutoComplete } from "antd";
 
 import { connect, ConnectedProps } from "react-redux";
 
-import { getCity } from "api";
+import { getCities } from "api";
 import { RootState } from "store";
 
 import "./style.scss";
-import { FC } from "react";
+import { FC, useState } from "react";
+import { prepareCities } from "utils/prepareCities";
 
 interface ISearch {
   getCityAPI: (string) => Promise<{
@@ -17,25 +19,50 @@ interface ISearch {
 }
 
 // const Search: FC<ISearch> = ({ getCityAPI, setCity }) => {
-const Search = ({ getCityAPI, setCity }) => {
-  const debouncedSearch = debounce(async (criteria) => {
-    const { data, isSuccess } = await getCityAPI(criteria);
-    if (isSuccess) {
-      setCity(data?.data?.[0]?.name);
+const Search = ({ getCitiesAPI, setCity }) => {
+  const [cities, setCities] = useState([]);
+  const [options, setOptions] = useState([]);
+  
+  const onFocus = () => {
+    if (!cities.length) {
+      getCitiesAPI().then(({ data: result }) => {
+        if (!result.error) {
+          setCities(prepareCities(result.data));
+        }
+      });
     }
-  }, 1000);
-
-  const onChange = (event) => {
-    const { value } = event.target;
-    debouncedSearch(value);
   };
 
-  return <input onChange={onChange} placeholder="Enter a city name ..." />;
+  const onSearch = (value) => {
+    if (!value || value === "") {
+      setOptions([]);
+      return;
+    }
+
+    setOptions(cities.filter((item) => item.value.includes(value)));
+  };
+
+  const debounceOnSearch = debounce(onSearch, 300);
+
+  const onSelect = (selectedCity) => {
+    setCity(selectedCity);
+  };
+
+  return (
+    <AutoComplete
+      onFocus={onFocus}
+      options={options}
+      onSelect={onSelect}
+      onSearch={debounceOnSearch}
+      className="m-2"
+      placeholder="Enter a city name ..."
+    />
+  );
 };
 
 /****************Conncet component to Store ********************/
 const mapDispatch = {
-  getCityAPI: getCity.endpoints.getCityByName.initiate,
+  getCitiesAPI: getCities.endpoints.getCities.initiate,
 };
 const connector = connect(null, mapDispatch);
 

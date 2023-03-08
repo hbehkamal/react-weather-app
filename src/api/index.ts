@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const getCity = createApi({
-  reducerPath: "city",
+export const getCities = createApi({
+  reducerPath: "cities",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_CITY_API_URL,
     prepareHeaders: (headers) => {
@@ -12,10 +12,11 @@ export const getCity = createApi({
 
       return headers;
     },
+    
   }),
   endpoints: (builder) => ({
-    getCityByName: builder.query({
-      query: (name) => `reference-data/locations/cities?keyword=${name}`,
+    getCities: builder.query({
+      query: () => `countries`,
     }),
   }),
 });
@@ -23,7 +24,7 @@ export const getCity = createApi({
 export const getWather = createApi({
   reducerPath: "weather",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.REACT_APP_API_URL}`,
+    baseUrl: process.env.REACT_APP_API_URL,
   }),
   endpoints: (builder) => ({
     getWeatherByName: builder.query({
@@ -34,4 +35,4 @@ export const getWather = createApi({
 });
 
 export const { useGetWeatherByNameQuery } = getWather;
-export const { useGetCityByNameQuery } = getCity;
+export const { useGetCitiesQuery } = getCities;
